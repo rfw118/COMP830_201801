@@ -17,6 +17,14 @@ public class QuitCommand
 	@Override
 	public boolean matchCommand(String s) {
 		// TODO Auto-generated method stub
-		return false;
+		
+		if(s.toUpperCase().equals("QUIT"))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 }

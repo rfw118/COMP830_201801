@@ -1,12 +1,16 @@
 import java.util.Scanner;
+import java.util.*;
+
 
 public class GameController {
 
 	private Player[] plrPlayers = new Player[1];
 	private String sUserInput = "";
+	public List<Commandable> UserCommands = new ArrayList<Commandable>();
+	
 	//private String sHelpCommands = "Command Help: 'Quit', 'Help'";
-	protected HelpCommand HelpMe = new HelpCommand();
-	protected QuitCommand QuitMe = new QuitCommand();
+	public HelpCommand HelpMe = new HelpCommand();
+	public QuitCommand QuitMe = new QuitCommand();
 	
 	
 	public Boolean bolQuit = false;
@@ -17,6 +21,11 @@ public class GameController {
 	{
 		
 		plrPlayers[0] = new Player();
+		
+			
+		Subscribe(HelpMe);
+		Subscribe(QuitMe);
+		
 	}
 	
 	public void GameStart()
@@ -29,8 +38,8 @@ public class GameController {
 		while( bolQuit == false)
 		{
 			sUserInput = inputScanner.next();
-			ProcessUserInput(sUserInput);
-			//I think if I call the Commandable and pass it the sUserinput I think it will check all classes with the Commandable implementation.
+			//ProcessUserInput(sUserInput);
+			ProcessUserInputCommands(sUserInput);
 			
 		
 		}
@@ -76,9 +85,35 @@ public class GameController {
 		{
 			UserOutput( "Command not recognized");
 		}
+		
 	}
 	
-
+	public void Subscribe(Commandable c)
+	{
+		UserCommands.add(c);
+		
+	}
+	
+	private void ProcessUserInputCommands(String UserInput)
+	{
+		boolean bolCommandExecuted = false;
+		
+		for(Commandable c:UserCommands)
+		{
+			bolCommandExecuted = c.matchCommand(UserInput);
+			if(bolCommandExecuted)
+			{
+				c.doCommand(this);
+				break;
+			}
+		}
+		
+		if(bolCommandExecuted == false)
+			{
+				this.UserOutput("Command not recognized");
+			}
+		
+	}
 	
 }
 
