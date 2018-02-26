@@ -18,15 +18,21 @@ public class HelpCommand implements Commandable{
 	public boolean matchCommand(String s) {
 		// TODO Auto-generated method stub
 		
-		System.out.println("Debug: HelpCommand:UserInput:s.toupper " + s.toUpperCase().toString());
-		if(s.toUpperCase().toString() == "HELP")
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		//if(s.toUpperCase().equals("HELP"))
+		//{
+		//	return true;
+		//}
+		//else
+		//{
+		//	return false;
+		//}
+		
+		//if(s.toUpperCase().equals("HELP"))
+		//{
+		//	return false;
+		//}
+		
+		return s.toUpperCase().equals("HELP"); //returns true for match and false for no match.
 		
 		
 	}
