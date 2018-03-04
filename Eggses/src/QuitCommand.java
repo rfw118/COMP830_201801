@@ -12,19 +12,27 @@ public class QuitCommand
 	public void doCommand(GameController G) {
 		// TODO Auto-generated method stub
 		G.bolQuit = true;
+		G.UserOutput(CommandMessage());
 	}
 
 	@Override
 	public boolean matchCommand(String s) {
 		// TODO Auto-generated method stub
 		
-		if(s.toUpperCase().equals("QUIT"))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return s.toUpperCase().equals("QUIT");
+		
+		
+	}
+	
+	private boolean CommandExecuted()
+	{
+		return true;
+	
+	}
+	
+	private String CommandMessage()
+	{
+		
+		return "I ran!";
 	}
 }

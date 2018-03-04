@@ -1,12 +1,13 @@
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
-class HelpCommandTest extends HelpCommand {
+
+class QuitCommandTest extends QuitCommand{
 
 	@Test
 	void test() {
-		//fail("Not yet implemented");
+		
 		
 		GameController G = new GameController();
 		
@@ -14,7 +15,10 @@ class HelpCommandTest extends HelpCommand {
 		{
 			this.doCommand(G);
 		}
-
+		else
+		{
+			fail("Failed to recoginze command.");
+		}
 	}
 
 }
